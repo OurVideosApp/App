@@ -1,20 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00f"
+    android:background="@mipmap/bg_colorful"
     tools:context=".mvp.view.activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <FrameLayout
+        android:id="@+id/main_framlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_radiogroup"></FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <RadioGroup
+        android:id="@+id/main_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/bottom_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/check_sift"
+            style="@style/main_bottom"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_02"
+            android:text="精选" />
+
+        <RadioButton
+            android:id="@+id/check_special"
+            style="@style/main_bottom"
+            android:drawableTop="@drawable/tab_03"
+            android:text="专题" />
+
+        <RadioButton
+            android:id="@+id/check_find"
+            style="@style/main_bottom"
+            android:drawableTop="@drawable/tab_01"
+            android:text="发现" />
+
+        <RadioButton
+            android:id="@+id/check_my"
+            style="@style/main_bottom"
+            android:drawableTop="@drawable/tab_04"
+            android:text="我的" />
+    </RadioGroup>
+</RelativeLayout>
