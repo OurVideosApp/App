@@ -12,14 +12,14 @@ import okhttp3.ResponseBody;
 /**
  * @author Lee
  * @create_time 2018/5/16 19:44
- * @description Presenter类
+ * @description 请求网络的Presenter
  */
 public class GetDataPresenter extends BasePresenter {
     private GetDataModel        mGetDataModel;
     private GetDataFromNetInter mGetDataFromNetInter;
 
-    public GetDataPresenter(GetDataFromNetInter getDataFromNetInter) {
-        this.mGetDataFromNetInter = getDataFromNetInter;
+    public GetDataPresenter(GetDataFromNetInter mGetDataFromNetInter) {
+        this.mGetDataFromNetInter = mGetDataFromNetInter;
         mGetDataModel = new GetDataModel(this);
     }
 

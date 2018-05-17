@@ -9,26 +9,26 @@ public class Constant {
     public static       int    requestNum = 10;
     public static       int    pageNum    = 1;
     //HOST1
-    public static final String BASE_URL  = "http://api.svipmovie.com/front/";
+    public static final String BASE_URL   = "http://api.svipmovie.com/";
 
     //首页
-    public static final String HOME_PAGE_URL = "homePageApi/homePage.do";
+    public static final String HOME_PAGE_URL = "front/homePageApi/homePage.do";
 
-    //影片详情
+    //影片详情 ?mediaId=5d21bed962f44c8eac068942745187ef
     public static final String VIDEO_DETAIL_URL = "videoDetailApi/videoDetail.do";
 
-    //影片分类列表
-    public static final String VIDEO_CATEGORY_URL = "videoDetailApi/videoDetail.do";
+    //影片分类列表    ?catalogId=402834815584e463015584e539330016&pnum=7
+    public static final String VIDEO_CATEGORY_URL = "front/columns/getVideoList.do";
 
-    //影片搜索
-    public static final String SEARCH_VIDEO_URL = "videoDetailApi/videoDetail.do";
+    //影片搜索   ?keyword=我
+    public static final String SEARCH_VIDEO_URL = "front/searchKeyWordApi/getVideoListByKeyWord.do ";
 
-    //获取评论列表
-    public static final String GET_COMMENT_URL = "videoDetailApi/videoDetail.do";
+    //获取评论列表   ?mediaId=CMCC_00000000000000001_621653189
+    public static final String GET_COMMENT_URL = "front/Commentary/getCommentList.do";
 
 
     //HOST2   福利
-    public static final String BASE_URL2             = "http://gank.io/api/";
+    public static final String BASE_URL1            = "http://gank.io/api/";
     //福利列表
     public static final String MATERIAL_BENEFITS_URL = "data/福利/" + requestNum + "/" + pageNum;
 

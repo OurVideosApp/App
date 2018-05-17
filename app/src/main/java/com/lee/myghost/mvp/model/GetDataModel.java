@@ -24,13 +24,15 @@ public class GetDataModel implements BaseModel {
     private PresenterInter presenterInter;
     private Disposable     d;
 
-    public GetDataModel(GetDataPresenter presenter) {
+    public GetDataModel(PresenterInter presenterInter) {
         this.presenterInter = presenterInter;
         this.d = d;
     }
 
     @Override
     public void getDataFromNet(String url, final Map<String, String> map) {
+        Log.d("Lee", "getDataFromNet: " + map );
+
         RetrofitUtil.getService()
                 .doPost(url, map)
                 .subscribeOn(Schedulers.io())//在io线程获取数据
@@ -45,7 +47,7 @@ public class GetDataModel implements BaseModel {
                     public void onNext(ResponseBody responseBody) {
                         //代表获取到数据
                         presenterInter.onSuccess(responseBody);
-                        Log.d("wangzx", "onNext: " + map.toString());
+                        Log.d("Lee", "onNext: " + map.toString());
                     }
 
                     @Override

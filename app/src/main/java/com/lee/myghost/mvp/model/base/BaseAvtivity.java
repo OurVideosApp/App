@@ -37,9 +37,7 @@ public abstract class BaseAvtivity<T extends BasePresenter> extends AppCompatAct
             }
         }
 
-    }
-
-    ;
+    };
 
     //初始化view
     public abstract void initView();
