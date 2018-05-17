@@ -20,7 +20,11 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+/**
+ * @author Lee
+ * @create_time 2018/5/16 20:52
+ * @description Retrofit工具箱
+ */
 public class RetrofitUtil {
     private static RetrofitUtil retrofitUtil = null;
     private Retrofit retrofit;

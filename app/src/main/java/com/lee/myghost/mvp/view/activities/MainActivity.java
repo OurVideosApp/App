@@ -2,12 +2,10 @@ package com.lee.myghost.mvp.view.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -15,35 +13,32 @@ import com.lee.myghost.R;
 import com.lee.myghost.mvp.model.base.BaseAvtivity;
 import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
-import com.lee.myghost.mvp.view.fragments.Fragment_My;
-import com.lee.myghost.mvp.view.fragments.Fragment_Sift;
-import com.lee.myghost.mvp.view.fragments.Fragment_Speical;
-import com.lee.myghost.mvp.view.fragments.Fragment_Find;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.lee.myghost.mvp.view.fragments.FindFragment;
+import com.lee.myghost.mvp.view.fragments.MineFragment;
+import com.lee.myghost.mvp.view.fragments.ChoicenessFragment;
+import com.lee.myghost.mvp.view.fragments.SpeicalFragment;
 
 import okhttp3.ResponseBody;
 
 public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetDataFromNetInter, RadioGroup.OnCheckedChangeListener {
 
-    private FrameLayout main_framlayout;
-    private RadioGroup main_radiogroup;
-    private RadioButton check_sift;
-    private RadioButton check_special;
-    private RadioButton check_find;
-    private RadioButton check_my;
-    private FragmentManager manager;
+    private FrameLayout         main_framlayout;
+    private RadioGroup          main_radiogroup;
+    private RadioButton         check_sift;
+    private RadioButton         check_special;
+    private RadioButton         check_find;
+    private RadioButton         check_my;
+    private FragmentManager     manager;
     private FragmentTransaction transaction;
-    private Fragment_Sift fragment_sift;
-    private Fragment_Speical fragment_speical;
-    private Fragment_My fragment_my;
-    private Fragment_Find fragment_find;
+    private ChoicenessFragment  mChoicenessFragment;
+    private SpeicalFragment     mSpeicalFragment;
+    private MineFragment        mMineFragment;
+    private FindFragment        mFindFragment;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("TAG", "setChildContentView: "+"执行onCreate");
+        Log.d("TAG", "setChildContentView: " + "执行onCreate");
 
     }
 
@@ -57,8 +52,8 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
         check_my = findViewById(R.id.check_my);
         manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
-        fragment_sift = new Fragment_Sift();
-        transaction.add(R.id.main_framlayout, fragment_sift);
+        mChoicenessFragment = new ChoicenessFragment();
+        transaction.add(R.id.main_framlayout, mChoicenessFragment);
         transaction.commit();
         main_radiogroup.setOnCheckedChangeListener(this);
     }
@@ -75,7 +70,7 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
 
     @Override
     public int setChildContentView() {
-        Log.d("TAG", "setChildContentView: "+"执行");
+        Log.d("TAG", "setChildContentView: " + "执行");
         return R.layout.activity_main;
     }
 
@@ -91,68 +86,69 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
             case R.id.check_sift:
                 FragmentTransaction transaction_sift = manager.beginTransaction();
                 hideAll(transaction_sift);
-                if (fragment_sift!=null){
-                    transaction_sift.show(fragment_sift);
-                }else {
-                    fragment_sift=new Fragment_Sift();
-                    transaction_sift.add(R.id.main_framlayout,fragment_sift);
+                if (mChoicenessFragment != null) {
+                    transaction_sift.show(mChoicenessFragment);
+                } else {
+                    mChoicenessFragment = new ChoicenessFragment();
+                    transaction_sift.add(R.id.main_framlayout, mChoicenessFragment);
                 }
                 transaction_sift.commit();
                 break;
             case R.id.check_special:
                 FragmentTransaction transaction_special = manager.beginTransaction();
                 hideAll(transaction_special);
-                if (fragment_speical!=null){
-                    transaction_special.show(fragment_speical);
-                }else {
-                    fragment_speical = new Fragment_Speical();
-                    transaction_special.add(R.id.main_framlayout,fragment_speical);
+                if (mSpeicalFragment != null) {
+                    transaction_special.show(mSpeicalFragment);
+                } else {
+                    mSpeicalFragment = new SpeicalFragment();
+                    transaction_special.add(R.id.main_framlayout, mSpeicalFragment);
                 }
                 transaction_special.commit();
                 break;
             case R.id.check_find:
                 FragmentTransaction transaction_find = manager.beginTransaction();
                 hideAll(transaction_find);
-                if (fragment_find!=null){
-                    transaction_find.show(fragment_find);
-                }else {
-                    fragment_find = new Fragment_Find();
-                    transaction_find.add(R.id.main_framlayout, fragment_find);
+                if (mFindFragment != null) {
+                    transaction_find.show(mFindFragment);
+                } else {
+                    mFindFragment = new FindFragment();
+                    transaction_find.add(R.id.main_framlayout, mFindFragment);
                 }
                 transaction_find.commit();
                 break;
             case R.id.check_my:
                 FragmentTransaction transaction_my = manager.beginTransaction();
                 hideAll(transaction_my);
-                if (fragment_my!=null){
-                    transaction_my.show(fragment_my);
-                }else {
-                    fragment_my = new Fragment_My();
-                    transaction_my.add(R.id.main_framlayout, fragment_my);
+                if (mMineFragment != null) {
+                    transaction_my.show(mMineFragment);
+                } else {
+                    mMineFragment = new MineFragment();
+                    transaction_my.add(R.id.main_framlayout, mMineFragment);
                 }
                 transaction_my.commit();
                 break;
         }
     }
-    private void hideAll(FragmentTransaction fragment){
-        if (fragment==null){
+
+    private void hideAll(FragmentTransaction fragment) {
+        if (fragment == null) {
             return;
         }
-        if (fragment_sift!=null){
-            fragment.hide(fragment_sift);
+        if (mChoicenessFragment != null) {
+            fragment.hide(mChoicenessFragment);
         }
-        if (fragment_speical!=null){
-            fragment.hide(fragment_speical);
+        if (mSpeicalFragment != null) {
+            fragment.hide(mSpeicalFragment);
         }
-        if (fragment_find!=null){
-            fragment.hide(fragment_find);
+        if (mFindFragment != null) {
+            fragment.hide(mFindFragment);
         }
-        if (fragment_my!=null){
-            fragment.hide(fragment_my);
+        if (mMineFragment != null) {
+            fragment.hide(mMineFragment);
         }
     }
 }

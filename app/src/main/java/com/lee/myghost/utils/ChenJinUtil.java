@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-
+/**
+ * @author Lee
+ * @create_time 2018/5/16 20:52
+ * @description 沉浸式工具箱
+ */
 public class ChenJinUtil {
     // 重置状态栏。即把状态栏颜色恢复为系统默认的黑色
     public static void reset(Activity activity) {

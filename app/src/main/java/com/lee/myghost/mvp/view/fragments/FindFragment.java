@@ -9,13 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lee.myghost.R;
+/**
+ * @author Lee
+ * @create_time 2018/5/16 19:37
+ * @description 发现的Fragment
+ */
 
-
-public class Fragment_My extends Fragment {
+public class FindFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_my,container,false);
+        View view=inflater.inflate(R.layout.fragment_find,container,false);
         return view;
     }
 }

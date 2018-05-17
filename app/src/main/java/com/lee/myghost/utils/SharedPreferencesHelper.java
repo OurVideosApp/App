@@ -6,9 +6,10 @@ import android.content.SharedPreferences;
 import java.util.Map;
 
 /**
- * Created by Lee on 2018/5/17.
+ * @author Lee
+ * @create_time 2018/5/16 20:52
+ * @description 数据存储工具箱
  */
-
 public class SharedPreferencesHelper {
     private static SharedPreferences sharedPreferences;
     /**

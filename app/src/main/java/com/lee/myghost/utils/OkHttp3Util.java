@@ -27,7 +27,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
+/**
+ * @author Lee
+ * @create_time 2018/5/16 20:52
+ * @description Okhttp工具箱
+ */
 public class OkHttp3Util {
 
 

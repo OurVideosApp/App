@@ -12,7 +12,7 @@ import okhttp3.ResponseBody;
 /**
  * @author Lee
  * @create_time 2018/5/16 19:44
- * @description
+ * @description Presenter类
  */
 public class GetDataPresenter extends BasePresenter {
     private GetDataModel        mGetDataModel;
