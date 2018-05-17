@@ -9,7 +9,7 @@ public class Constant {
     public static       int    requestNum = 10;
     public static       int    pageNum    = 1;
     //HOST1
-    public static final String BASE_URL1  = "http://api.svipmovie.com/front/";
+    public static final String BASE_URL  = "http://api.svipmovie.com/front/";
 
     //首页
     public static final String HOME_PAGE_URL = "homePageApi/homePage.do";

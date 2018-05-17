@@ -67,14 +67,7 @@ public class RetrofitUtil {
             String oldUrl = request.url().toString();
             Log.e( "----oldUrl", oldUrl );
             Map<String, String> map = new HashMap<>();
-            String token = CommonUtils.getString( "token" );
-            map.put( "source", "android" );
-            map.put( "appVersion", "101" );
-            if (token == "") {
-                map.put( "token", "1" );
-            } else {
-                map.put( "token", token );
-            }
+
 
             if ("GET".equals( method )) {
                 StringBuilder stringBuilder = new StringBuilder();

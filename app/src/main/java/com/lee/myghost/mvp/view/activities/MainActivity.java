@@ -2,7 +2,9 @@ package com.lee.myghost.mvp.view.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
+import com.lee.myghost.R;
 import com.lee.myghost.mvp.model.base.BaseAvtivity;
 import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
@@ -14,6 +16,7 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("TAG", "setChildContentView: "+"执行onCreate");
 
     }
 
@@ -34,7 +37,8 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
 
     @Override
     public int setChildContentView() {
-        return 0;
+        Log.d("TAG", "setChildContentView: "+"执行");
+        return R.layout.activity_main;
     }
 
     @Override
