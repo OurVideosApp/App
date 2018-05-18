@@ -31,11 +31,8 @@ public class GetDataModel implements BaseModel {
 
     @Override
     public void getDataFromNet(String url, final Map<String, String> map) {
-        Log.d("Lee", "getDataFromNet: " + map );
-
-        RetrofitUtil.getService()
-                .doPost(url, map)
-                .subscribeOn(Schedulers.io())//在io线程获取数据
+        Log.d("Lee", "getDataFromNet: " + map);
+        RetrofitUtil.getService().doPost(url, map).subscribeOn(Schedulers.io())//在io线程获取数据
                 .observeOn(AndroidSchedulers.mainThread())//在android主线程梳理数据
                 .subscribe(new Observer<ResponseBody>() {
                     @Override

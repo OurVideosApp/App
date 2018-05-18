@@ -2,7 +2,6 @@ package com.lee.myghost.mvp.presenter;
 
 import com.lee.myghost.mvp.model.GetDataModel;
 import com.lee.myghost.mvp.model.base.BasePresenter;
-import com.lee.myghost.mvp.model.contract.presenterinter.PresenterInter;
 import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 
 import java.util.Map;
