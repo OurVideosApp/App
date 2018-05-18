@@ -25,7 +25,7 @@ public class GetDataModel implements BaseModel {
     private Disposable     d;
 
     public GetDataModel(GetDataPresenter presenter) {
-        this.presenterInter = presenterInter;
+        this.presenterInter = presenter;
         this.d = d;
     }
 
