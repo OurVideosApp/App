@@ -9,20 +9,20 @@
         android:id="@+id/choicenessadapter_linerlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginRight="@dimen/x10"
+        android:layout_marginLeft="10pt"
+        android:layout_marginRight="10pt"
         android:background="#ffffff">
         <ImageView
             android:id="@+id/choicenessadapter_imageview"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y100"
+            android:layout_height="100pt"
             android:layout_margin="10px"
             android:scaleType="fitXY"/>
     </RelativeLayout>
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="@dimen/y30"
+    android:layout_height="30pt"
     android:layout_below="@+id/choicenessadapter_linerlayout"
     android:gravity="center">
     <TextView

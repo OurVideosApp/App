@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyGhost</string>
+    <string name="clr_normal">#9f9</string>
+    <string name="clr_pressed">#fff</string>
 </resources>

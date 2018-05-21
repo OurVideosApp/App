@@ -12,20 +12,20 @@
         <ImageView
             android:id="@+id/speical_fragment_tabulate_img"
             android:scaleType="fitXY"
-            android:layout_width="@dimen/x316"
+            android:layout_width="316pt"
             android:background="#f00"
-            android:layout_height="@dimen/y180" />
+            android:layout_height="180pt" />
 
         <TextView
             android:id="@+id/speical_fragment_tabulate_name"
-            android:layout_width="@dimen/x316"
-            android:layout_height="@dimen/y25"
+            android:layout_width="316pt"
+            android:layout_height="25pt"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/speical_fragment_tabulate_img"
             android:gravity="center"
             android:singleLine="true"
             android:text="王梓"
-            android:textSize="@dimen/y20"
+            android:textSize="20pt"
             tools:ignore="RtlCompat" />
     </RelativeLayout>
 </RelativeLayout>
