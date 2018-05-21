@@ -72,6 +72,7 @@ public class SpeicalFragment extends Fragment implements GetDataFromNetInter {
                     String loadURL = videoList_bean.getRet().getList().get(position).getLoadURL();
                     Intent intent = new Intent(getActivity(), VideoListActivity.class);
                     intent.putExtra("url",loadURL);
+                    intent.putExtra("name",videoList_bean.getRet().getList().get(position).getTitle());
                     startActivity(intent);
                 }
             });

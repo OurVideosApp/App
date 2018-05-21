@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lee.myghost.R;
@@ -35,6 +36,16 @@ public class VideoListActivity extends AppCompatActivity implements GetDataFromN
         video_list_tiaomu = findViewById(R.id.video_list_tiaomu);
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
+        String name = intent.getStringExtra("name");
+        TextView video_list_title = findViewById(R.id.video_list_title);
+        TextView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        video_list_title.setText(name);
         String[] split = url.split("\\?");
         Log.e("wang", split[1].toString()+"123456");
         String[] split1 = split[1].split("\\=");
