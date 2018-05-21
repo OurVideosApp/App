@@ -64,6 +64,9 @@ public class ChoicenessFragment extends Fragment implements GetDataFromNetInter,
         choiceness_banner = view.findViewById(R.id.choiceness_banner);
         choiceness_recylerview = view.findViewById(R.id.choiceness_recylerview);
         choiceness_edittext = view.findViewById(R.id.choiceness_edittext);
+        /*解决滑动卡顿*/
+        choiceness_recylerview.setHasFixedSize(true);
+        choiceness_recylerview.setNestedScrollingEnabled(false);
         /*搜索框透明*/
         choiceness_linearlayout.getBackground().setAlpha(100);
         /*获取数据*/
