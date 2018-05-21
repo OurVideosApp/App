@@ -8,10 +8,12 @@ import android.os.Handler;
 import android.os.Process;
 import android.os.StrictMode;
 
+import com.lee.myghost.utils.DensityHelper;
 import com.lee.myghost.utils.SharedPreferencesHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * @author Lee
@@ -19,10 +21,11 @@ import java.util.List;
  * @description Application
  */
 public class MyApplication extends Application {
-    public static  int           myTid;
-    public static  Handler       handler;
-    public static  Context       context;
-    private static MyApplication instance;
+    public final static float DESIGN_WIDTH = 720;
+    public static  int                     myTid;
+    public static  Handler                 handler;
+    public static  Context                 context;
+    private static MyApplication           instance;
     private static SharedPreferencesHelper sharedPreferencesHelper;
     /**
      * 打开的activity
@@ -41,6 +44,8 @@ public class MyApplication extends Application {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         builder.detectFileUriExposure();
+
+        new DensityHelper(this, DESIGN_WIDTH).activate();  //DESIGN_WIDTH为设计图宽度，同样不要忘记清单文件配置Application，另 布局中使用pt
     }
 
     /**

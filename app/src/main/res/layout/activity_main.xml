@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lee.myghost.mvp.view.customviews.ResideLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,43 +8,52 @@
     android:background="@mipmap/bg_colorful"
     tools:context=".mvp.view.activities.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/main_framlayout"
+    <include layout="@layout/side_menus_layout"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/main_radiogroup"></FrameLayout>
+        android:background="@mipmap/bg_colorful">
 
-    <RadioGroup
-        android:id="@+id/main_radiogroup"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@mipmap/bottom_bg"
-        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/main_framlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/main_radiogroup"></FrameLayout>
 
-        <RadioButton
-            android:id="@+id/check_sift"
-            style="@style/main_bottom"
-            android:checked="true"
-            android:drawableTop="@drawable/tab_02"
-            android:text="精选" />
+        <RadioGroup
+            android:id="@+id/main_radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="80pt"
+            android:layout_alignParentBottom="true"
+            android:background="@mipmap/bottom_bg"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/check_special"
-            style="@style/main_bottom"
-            android:drawableTop="@drawable/tab_03"
-            android:text="专题" />
+            <RadioButton
+                android:id="@+id/check_sift"
+                style="@style/main_bottom"
+                android:checked="true"
+                android:drawableTop="@drawable/tab_02"
+                android:text="精选"/>
 
-        <RadioButton
-            android:id="@+id/check_find"
-            style="@style/main_bottom"
-            android:drawableTop="@drawable/tab_01"
-            android:text="发现" />
+            <RadioButton
+                android:id="@+id/check_special"
+                style="@style/main_bottom"
+                android:drawableTop="@drawable/tab_03"
+                android:text="专题"/>
 
-        <RadioButton
-            android:id="@+id/check_my"
-            style="@style/main_bottom"
-            android:drawableTop="@drawable/tab_04"
-            android:text="我的" />
-    </RadioGroup>
-</RelativeLayout>
+            <RadioButton
+                android:id="@+id/check_find"
+                style="@style/main_bottom"
+                android:drawableTop="@drawable/tab_01"
+                android:text="发现"/>
+
+            <RadioButton
+                android:id="@+id/check_my"
+                style="@style/main_bottom"
+                android:drawableTop="@drawable/tab_04"
+                android:text="我的"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+</com.lee.myghost.mvp.view.customviews.ResideLayout>

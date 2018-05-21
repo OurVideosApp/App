@@ -81,7 +81,7 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
 
     @Override
     public void onError(Throwable throwable) {
-
+        Log.d("MainActivity", "throwable:" + throwable);
     }
 
     @Override

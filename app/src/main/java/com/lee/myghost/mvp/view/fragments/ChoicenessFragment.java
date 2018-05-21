@@ -20,7 +20,6 @@ import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
 import com.lee.myghost.utils.glide.GlideImageLoader;
 import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,13 +36,13 @@ import okhttp3.ResponseBody;
  */
 public class ChoicenessFragment extends Fragment implements GetDataFromNetInter {
 
-    private LinearLayout choiceness_linearlayout;
-    private View view;
-    private Banner choiceness_banner;
-    private RecyclerView choiceness_recylerview;
-    private EditText choiceness_edittext;
+    private LinearLayout     choiceness_linearlayout;
+    private View             view;
+    private Banner           choiceness_banner;
+    private RecyclerView     choiceness_recylerview;
+    private EditText         choiceness_edittext;
     private GetDataPresenter getDataPresenter;
-    private List<String> imageurls;
+    private List<String>     imageurls;
 
     @Nullable
     @Override
@@ -61,8 +60,8 @@ public class ChoicenessFragment extends Fragment implements GetDataFromNetInter 
         choiceness_recylerview = view.findViewById(R.id.choiceness_recylerview);
         choiceness_edittext = view.findViewById(R.id.choiceness_edittext);
         getDataPresenter = new GetDataPresenter(this);
-        Map<String, String> map=new HashMap<>();
-        getDataPresenter.getDataFromNet(Constant.HOME_PAGE_URL,map);
+        Map<String, String> map = new HashMap<>();
+        getDataPresenter.getDataFromNet(Constant.HOME_PAGE_URL, map);
     }
 
     @Override
@@ -74,10 +73,10 @@ public class ChoicenessFragment extends Fragment implements GetDataFromNetInter 
             /*轮播图*/
             List<ChoicenessBean.RetBean.ListBean> list = ret.getList();
             imageurls = new ArrayList<>();
-            for (int i=0; i<list.size(); i++){
-                if (list.get(i).getShowType().equals("banner")){
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getShowType().equals("banner")) {
                     List<ChoicenessBean.RetBean.ListBean.ChildListBean> childList = list.get(i).getChildList();
-                    for (int j=0; j<childList.size(); j++){
+                    for (int j = 0; j < childList.size(); j++) {
                         String pic = childList.get(j).getPic().toString();
                         imageurls.add(pic);
                     }
@@ -97,6 +96,6 @@ public class ChoicenessFragment extends Fragment implements GetDataFromNetInter 
 
     @Override
     public void onError(Throwable throwable) {
-
+        Log.d("ChoicenessFragment", "throwable:" + throwable);
     }
 }
