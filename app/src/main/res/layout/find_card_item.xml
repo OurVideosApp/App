@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x192"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="@dimen/y50"
+    android:layout_marginLeft="@dimen/x30"
+    android:layout_marginRight="@dimen/x30"
+    android:background="@mipmap/card_bg">
+
+    <TextView
+        android:padding="10dp"
+        android:gravity="center"
+        android:id="@+id/find_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="17sp"
+        android:textColor="#fff"
+        android:text=""/>
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="@dimen/x100"
+        android:paddingRight="@dimen/x100"
+        android:contentDescription="@null"
+        android:id="@+id/find_img"
+        android:layout_width="@dimen/x170"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:minHeight="100dp"
+        android:id="@+id/find_jianjie"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:layout_marginTop="2dp"
+        android:textColor="#33000000"
+        android:text=""/>
+
+</LinearLayout>

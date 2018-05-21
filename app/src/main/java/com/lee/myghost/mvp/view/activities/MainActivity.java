@@ -33,7 +33,7 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
     private ChoicenessFragment  mChoicenessFragment;
     private SpeicalFragment     mSpeicalFragment;
     private MineFragment        mMineFragment;
-    private FindFragment        mFindFragment;
+    private FindFragment mFindFragment;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

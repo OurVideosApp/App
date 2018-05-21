@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</android.support.constraint.ConstraintLayout>
+
+     <com.lee.myghost.utils.fangtantan_Animation.SwipeFlingAdapterView
+        android:id="@+id/swipe_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        swipe:min_adapter_stack="4"
+        swipe:max_visible="4"
+        swipe:y_offset_step="28dp"/>
+
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="1dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:layout_marginTop="@dimen/y30"
+        android:id="@+id/find_bt_huanyipi"
+        android:layout_alignTop="@id/anchor"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="@drawable/find_bt_selector"
+        android:text="换一批"/>
+
+</RelativeLayout>

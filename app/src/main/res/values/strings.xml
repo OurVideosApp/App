@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyGhost</string>
+    <drawable name="clr_normal">#9f9</drawable>
+    <drawable name="clr_pressed">#fff</drawable>
 </resources>
