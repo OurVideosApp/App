@@ -39,7 +39,6 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("TAG", "setChildContentView: " + "执行onCreate");
-
     }
 
     @Override
@@ -51,16 +50,15 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
         check_find = findViewById(R.id.check_find);
         check_my = findViewById(R.id.check_my);
         manager = getSupportFragmentManager();
-        transaction = manager.beginTransaction();
         mChoicenessFragment = new ChoicenessFragment();
-        transaction.add(R.id.main_framlayout, mChoicenessFragment);
-        transaction.commit();
         main_radiogroup.setOnCheckedChangeListener(this);
     }
 
     @Override
     public void initData() {
-
+        transaction = manager.beginTransaction();
+        transaction.add(R.id.main_framlayout, mChoicenessFragment);
+        transaction.commit();
     }
 
     @Override

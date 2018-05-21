@@ -1,5 +1,6 @@
 package com.lee.myghost.mvp.view.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,8 +8,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.lee.myghost.R;
+import com.lee.myghost.mvp.view.activities.VideosDetailActivity;
 
 /**
  * @author Lee
@@ -20,6 +23,18 @@ public class MineFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_mine,container,false);
+        Button button = view.findViewById(R.id.clickthis);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), VideosDetailActivity.class);
+                startActivity(intent);
+
+            }
+        });
         return view;
     }
+
+
 }
