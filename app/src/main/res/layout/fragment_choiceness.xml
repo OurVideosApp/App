@@ -1,75 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-
-    <com.youth.banner.Banner
-        android:id="@+id/choiceness_banner"
-        android:layout_width="match_parent"
-        android:layout_height="200pt"></com.youth.banner.Banner>
-
-    <RelativeLayout
-        android:id="@+id/choiceness_recommend"
-        android:layout_width="match_parent"
-        android:layout_height="88pt"
-        android:layout_below="@+id/choiceness_banner"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="39pt"
-            android:layout_marginLeft="26pt"
-            android:gravity="center"
-            android:text="精彩推荐"
-            android:textColor="#ffffff"
-            android:textSize="25pt"/>
-    </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/choiceness_recylerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/choiceness_recommend"></android.support.v7.widget.RecyclerView>
+    android:fadingEdge="none"
+    android:overScrollMode="never"
+    android:scrollbars="none">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100pt">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/choiceness_linearlayout"
-            android:layout_width="350pt"
-            android:layout_height="50pt"
-            android:layout_centerInParent="true"
-            android:background="@drawable/sousuokuang"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <com.youth.banner.Banner
+            android:id="@+id/choiceness_banner"
+            android:layout_width="match_parent"
+            android:layout_height="200pt"></com.youth.banner.Banner>
 
-            <ImageView
-                android:layout_width="30pt"
-                android:layout_height="30pt"
-                android:layout_marginLeft="30pt"
-                android:background="@mipmap/search" />
-
-            <EditText
-                android:id="@+id/choiceness_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10pt"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center"
-                android:hint="一念天堂"/>
+        <RelativeLayout
+            android:id="@+id/choiceness_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/choiceness_banner"
+            android:gravity="center_vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10pt"
-                android:text="Go"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"/>
-        </LinearLayout>
-    </RelativeLayout>
+                android:layout_height="39pt"
+                android:layout_marginLeft="26pt"
+                android:gravity="center"
+                android:text="精彩推荐"
+                android:textColor="#ffffff"
+                android:textSize="25sp"/>
+        </RelativeLayout>
 
-</RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/choiceness_recylerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/choiceness_recommend">
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100pt">
+
+            <LinearLayout
+                android:id="@+id/choiceness_linearlayout"
+                android:layout_width="350pt"
+                android:layout_height="50pt"
+                android:layout_centerInParent="true"
+                android:background="@drawable/sousuokuang"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30pt"
+                    android:layout_height="30pt"
+                    android:layout_marginLeft="30pt"
+                    android:background="@mipmap/search"
+                    />
+
+                <EditText
+                    android:id="@+id/choiceness_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10pt"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:hint="一念天堂"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10pt"
+                    android:text="Go"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
