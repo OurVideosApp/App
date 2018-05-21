@@ -48,5 +48,7 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
     //banner
     implementation 'com.youth.banner:banner:1.4.9'
+    //view
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
 }
