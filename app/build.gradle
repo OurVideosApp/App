@@ -45,6 +45,8 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
     //banner
     implementation 'com.youth.banner:banner:1.4.9'
-
     implementation 'com.github.open-android:IjkPlayer:1.0.0'
+    //Toolbar
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:23.1.1'
 }

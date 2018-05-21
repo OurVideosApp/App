@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <TextView
-android:id="@+id/special_title"
+    android:id="@+id/special_title"
     android:layout_width="match_parent"
     android:background="#f00"
     android:textSize="@dimen/x16"

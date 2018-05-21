@@ -5,9 +5,25 @@
     xmlns:swipe="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/find_toolbar"
+        android:background="#f00"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x42">
+        <TextView
+            android:id="@+id/find_toolbar_tv"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发现"
+            android:textColor="#fff"
+            android:textSize="@dimen/x16"/>
+    </android.support.v7.widget.Toolbar>
 
      <com.lee.myghost.utils.fangtantan_Animation.SwipeFlingAdapterView
         android:id="@+id/swipe_view"
+         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         swipe:min_adapter_stack="4"
@@ -29,7 +45,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:background="@drawable/find_bt_selector"
+        android:background="@drawable/find_bt_round_click"
         android:text="换一批"/>
 
 </RelativeLayout>

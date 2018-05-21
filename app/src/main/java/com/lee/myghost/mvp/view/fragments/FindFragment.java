@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -49,26 +50,35 @@ public class FindFragment extends Fragment implements SwipeFlingAdapterView.onFl
     private SwipeFlingAdapterView swipeView;
     private InnerAdapter adapter;
     private View view;
+    private Toolbar toolbar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_find,container,false);
 
+   //     toolbar();
         initView();
         loadData();
 
         return view;
     }
+
+    //设置标题
+    private void toolbar() {
+        toolbar = (Toolbar) view.findViewById(R.id.find_toolbar);
+     //   toolbar.setTitle("发现");
+     //   toolbar.setSubtitle("SubTitle");
+     //   toolbar.setLogo(R.mipmap.ic_launcher);
+    }
+
     private void initView() {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         float density = dm.density;
         cardWidth = (int) (dm.widthPixels - (2 * 38 * density));
-        cardHeight = (int) (dm.heightPixels - (358 * density));
-
+        cardHeight = (int) (dm.heightPixels - (440 * density));
 
         swipeView = (SwipeFlingAdapterView) view.findViewById(R.id.swipe_view);
-
 
         if (swipeView != null) {
             swipeView.setIsNeedSwipe(true);

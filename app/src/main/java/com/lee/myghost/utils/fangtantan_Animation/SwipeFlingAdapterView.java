@@ -16,7 +16,12 @@ import android.widget.FrameLayout;
 import com.lee.myghost.R;
 
 import java.util.ArrayList;
-
+/*
+ * 发现页面 防探探卡片动画的 Utils
+ * 2018-05-21 15:13
+ * 王彦勇
+ *
+ * */
 public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 
     private ArrayList<View> cacheItems = new ArrayList<>();
@@ -30,7 +35,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
     private int MIN_ADAPTER_STACK = 6;
     private float ROTATION_DEGREES = 2f;
     private int LAST_OBJECT_IN_STACK = 0;
-
     private Adapter mAdapter;
     private onFlingListener mFlingListener;
     private AdapterDataSetObserver mDataSetObserver;
@@ -38,37 +42,28 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
     private View mActiveCard = null;
     private OnItemClickListener mOnItemClickListener;
     private FlingCardListener flingCardListener;
-
     // 支持左右滑
     public boolean isNeedSwipe = true;
-
     private int initTop;
     private int initLeft;
-
     public SwipeFlingAdapterView(Context context) {
         this(context, null);
     }
-
     public SwipeFlingAdapterView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
-
     public SwipeFlingAdapterView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SwipeFlingAdapterView, defStyle, 0);
         MAX_VISIBLE = a.getInt(R.styleable.SwipeFlingAdapterView_max_visible, MAX_VISIBLE);
         MIN_ADAPTER_STACK = a.getInt(R.styleable.SwipeFlingAdapterView_min_adapter_stack, MIN_ADAPTER_STACK);
         ROTATION_DEGREES = a.getFloat(R.styleable.SwipeFlingAdapterView_rotation_degrees, ROTATION_DEGREES);
         yOffsetStep = a.getDimensionPixelOffset(R.styleable.SwipeFlingAdapterView_y_offset_step, 0);
         a.recycle();
-
     }
-
     public void setIsNeedSwipe(boolean isNeedSwipe) {
         this.isNeedSwipe = isNeedSwipe;
     }
-
     public void init(final Context context, Adapter mAdapter) {
         if(context instanceof onFlingListener) {
             mFlingListener = (onFlingListener) context;
@@ -80,19 +75,16 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
         }
         setAdapter(mAdapter);
     }
-
  	@Override
     public View getSelectedView() {
         return mActiveCard;
     }
-
     @Override
     public void requestLayout() {
         if (!mInLayout) {
             super.requestLayout();
         }
     }
-
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
@@ -127,7 +119,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
         	}
         }
     }
-
     private void removeAndAddToCache(int remain) {
         View view;
         for (int i = 0; i < getChildCount() - remain; ) {
@@ -136,7 +127,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
             cacheItems.add(view);
         }
     }
-
     private void layoutChildren(int startingIndex, int adapterCount){
         while (startingIndex < Math.min(adapterCount, MAX_VISIBLE) ) {
             View item = null;
@@ -152,7 +142,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
             startingIndex++;
         }
     }
-
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void makeAndAddView(View child, int index) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) child.getLayoutParams();
@@ -171,7 +160,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
         }
         int w = child.getMeasuredWidth();
         int h = child.getMeasuredHeight();
-
         int gravity = lp.gravity;
         if (gravity == -1) {
             gravity = Gravity.TOP | Gravity.START;
@@ -181,7 +169,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
             layoutDirection = getLayoutDirection();
         final int absoluteGravity = Gravity.getAbsoluteGravity(gravity, layoutDirection);
         final int verticalGravity = gravity & Gravity.VERTICAL_GRAVITY_MASK;
-
         int childLeft;
         int childTop;
         switch (absoluteGravity & Gravity.HORIZONTAL_GRAVITY_MASK) {

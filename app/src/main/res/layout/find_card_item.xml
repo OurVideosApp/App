@@ -32,11 +32,11 @@
         android:scaleType="centerCrop"/>
 
     <TextView
-        android:minHeight="100dp"
+        android:minHeight="150dp"
         android:id="@+id/find_jianjie"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_weight="30"
         android:layout_marginTop="2dp"
         android:textColor="#33000000"
         android:text=""/>
