@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="192pt"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    android:layout_marginTop="50pt"
     android:layout_marginLeft="30pt"
     android:layout_marginRight="30pt"
-    android:background="@mipmap/card_bg">
+    android:layout_marginTop="50pt"
+    android:background="@mipmap/card_bg"
+    android:orientation="vertical">
 
     <TextView
-        android:padding="10dp"
-        android:gravity="center"
         android:id="@+id/find_title"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:textSize="17sp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text=""
         android:textColor="#fff"
-        android:text=""/>
+        android:textSize="17sp"/>
 
     <ImageView
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="100pt"
-        android:paddingRight="100pt"
-        android:contentDescription="@null"
         android:id="@+id/find_img"
         android:layout_width="170pt"
         android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="10"
+        android:contentDescription="@null"
+        android:paddingLeft="100pt"
+        android:paddingRight="100pt"
         android:scaleType="centerCrop"/>
 
     <TextView
-        android:minHeight="150pt"
         android:id="@+id/find_jianjie"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="30"
         android:layout_marginTop="2dp"
-        android:textColor="#33000000"
-        android:text=""/>
+        android:layout_weight="30"
+        android:minHeight="150pt"
+        android:text=""
+        android:textColor="#33000000"/>
+
 
 </LinearLayout>
