@@ -15,21 +15,21 @@
         <ImageView
             android:id="@+id/choicenessadapter_imageview"
             android:layout_width="match_parent"
-            android:layout_height="100pt"
-            android:layout_margin="10px"
+            android:layout_height="300pt"
+            android:layout_margin="10pt"
             android:scaleType="fitXY"/>
     </RelativeLayout>
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="30pt"
+    android:layout_height="50pt"
     android:layout_below="@+id/choicenessadapter_linerlayout"
     android:gravity="center">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/choicenessadapter_name"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="#ffffff" />
 </RelativeLayout>
 

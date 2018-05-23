@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+greendao {
+    schemaVersion 1
+    daoPackage 'com.lee.myghost'//换成自己的包名
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -55,4 +60,6 @@ dependencies {
     implementation 'com.sackcentury:shinebutton:0.2.0'
     //自定义textView  用于实现更多文字的显示
     implementation 'com.ms-square:expandableTextView:0.1.4'
+    implementation 'com.android.support:appcompat-v7:23.1.1'
+    implementation 'org.greenrobot:greendao:3.2.2'
 }

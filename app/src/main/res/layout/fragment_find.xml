@@ -26,10 +26,10 @@
         android:id="@+id/swipe_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20pt"
+        android:layout_marginTop="20dp"
         swipe:max_visible="4"
         swipe:min_adapter_stack="4"
-        swipe:y_offset_step="28pt"/>
+        swipe:y_offset_step="28dp"/>
 
     <View
         android:id="@+id/anchor"
