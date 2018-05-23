@@ -22,7 +22,7 @@
             android:textSize="16pt"/>
     </android.support.v7.widget.Toolbar>
 
-    <com.lee.myghost.utils.fangtantan_Animation.SwipeFlingAdapterView
+    <com.lee.myghost.utils.fangtantan_animation.SwipeFlingAdapterView
         android:id="@+id/swipe_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

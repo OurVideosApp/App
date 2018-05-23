@@ -1,4 +1,4 @@
-package com.lee.myghost.utils.fangtantan_Animation;
+package com.lee.myghost.utils.fangtantan_animation;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.FrameLayout;
 

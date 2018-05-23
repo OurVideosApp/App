@@ -21,8 +21,8 @@ import java.util.List;
 
 public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.ViewHolder> {
     private List<ChoicenessBean.RetBean.ListBean.ChildListBean> childList;
-    private Context context;
-    private ItemClickListener mListener;
+    private Context                                             context;
+    private ItemClickListener                                   mListener;
 
     public void setmListener(ItemClickListener mListener) {
         this.mListener = mListener;
@@ -36,16 +36,16 @@ public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.Vi
     @NonNull
     @Override
     public ChoicenessAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=View.inflate(context, R.layout.choiceness_item_adapter,null);
-        ViewHolder holder=new ViewHolder(view);
+        View view = View.inflate(context, R.layout.choiceness_item_adapter, null);
+        ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ChoicenessAdapter.ViewHolder holder, final int position) {
-            String pic = childList.get(position).getPic();
-            Glide.with(context).load(pic).into(holder.choicenessadapter_imageview);
-            holder.choicenessadapter_linerlayout.getBackground().setAlpha(100);
+        String pic = childList.get(position).getPic();
+        Glide.with(context).load(pic).into(holder.choicenessadapter_imageview);
+        holder.choicenessadapter_linerlayout.getBackground().setAlpha(100);
         holder.choicenessadapter_name.setText(childList.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +63,8 @@ public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView choicenessadapter_name;
-        private  ImageView choicenessadapter_imageview;
+        private TextView       choicenessadapter_name;
+        private ImageView      choicenessadapter_imageview;
         private RelativeLayout choicenessadapter_linerlayout;
 
         public ViewHolder(View itemView) {

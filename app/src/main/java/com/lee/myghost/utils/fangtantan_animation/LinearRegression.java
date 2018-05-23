@@ -1,4 +1,4 @@
-package com.lee.myghost.utils.fangtantan_Animation;
+package com.lee.myghost.utils.fangtantan_animation;
 
 /*
  * 发现页面 防探探卡片动画的 Utils

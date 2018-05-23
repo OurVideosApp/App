@@ -8,12 +8,12 @@
     <TextView
         android:id="@+id/special_title"
         android:layout_width="match_parent"
-        android:layout_height="42pt"
+        android:layout_height="82pt"
         android:background="#f00"
         android:gravity="center"
         android:text="专题"
         android:textColor="#fff"
-        android:textSize="16pt"></TextView>
+        android:textSize="32pt"></TextView>
 
 
     <android.support.v7.widget.RecyclerView

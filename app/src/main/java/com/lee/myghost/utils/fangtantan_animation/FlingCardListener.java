@@ -1,4 +1,4 @@
-package com.lee.myghost.utils.fangtantan_Animation;
+package com.lee.myghost.utils.fangtantan_animation;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

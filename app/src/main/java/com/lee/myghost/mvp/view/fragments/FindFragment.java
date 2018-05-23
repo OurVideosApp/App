@@ -1,6 +1,5 @@
 package com.lee.myghost.mvp.view.fragments;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lee.myghost.R;
-import com.lee.myghost.utils.fangtantan_Animation.SwipeFlingAdapterView;
+import com.lee.myghost.utils.fangtantan_animation.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 import java.util.Collection;
