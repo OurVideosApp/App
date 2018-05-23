@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+greendao {
+    schemaVersion 1
+    daoPackage 'com.lee.myghost'//换成自己的包名
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -46,10 +51,9 @@ dependencies {
     //banner
     implementation 'com.youth.banner:banner:1.4.9'
     //view
-    implementation 'com.makeramen:roundedimageview:2.3.0'
 
-    implementation 'com.github.open-android:IjkPlayer:1.0.0'
     //Toolbar
     //noinspection GradleCompatible
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    implementation 'com.android.support:appcompat-v7:23.1.1'
+    implementation 'org.greenrobot:greendao:3.2.2'
 }

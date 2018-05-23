@@ -14,7 +14,7 @@
         <com.youth.banner.Banner
             android:id="@+id/choiceness_banner"
             android:layout_width="match_parent"
-            android:layout_height="200pt"></com.youth.banner.Banner>
+            android:layout_height="250pt"></com.youth.banner.Banner>
 
         <RelativeLayout
             android:id="@+id/choiceness_recommend"
@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:text="精彩推荐"
                 android:textColor="#ffffff"
-                android:textSize="25sp"/>
+                android:textSize="15sp"/>
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
@@ -76,7 +76,7 @@
                     android:layout_marginRight="10pt"
                     android:text="Go"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp"/>
+                    android:textSize="15sp"/>
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>

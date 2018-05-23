@@ -22,6 +22,7 @@ import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
 import com.lee.myghost.mvp.view.activities.SearchActivity;
 import com.lee.myghost.mvp.view.adapters.ChoicenessAdapter;
+import com.lee.myghost.utils.ChenJinUtil;
 import com.lee.myghost.utils.glide.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -56,6 +57,7 @@ public class ChoicenessFragment extends Fragment implements GetDataFromNetInter,
         view = inflater.inflate(R.layout.fragment_choiceness, container, false);
         choiceness_linearlayout = view.findViewById(R.id.choiceness_linearlayout);
         choiceness_linearlayout.getBackground().setAlpha(100);
+        ChenJinUtil.getStatusBarHeight(getActivity());
         return view;
     }
 
@@ -108,6 +110,12 @@ public class ChoicenessFragment extends Fragment implements GetDataFromNetInter,
 
             ChoicenessAdapter choicenessAdapter = new ChoicenessAdapter(childList,getActivity());
             choiceness_recylerview.setAdapter(choicenessAdapter);
+            choicenessAdapter.setmListener(new ChoicenessAdapter.ItemClickListener() {
+                @Override
+                public void OnItemClick(int position) {
+
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }

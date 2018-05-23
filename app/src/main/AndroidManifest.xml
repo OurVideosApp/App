@@ -47,8 +47,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.view.activities.VideoListActivity"></activity>
-        <activity android:name=".mvp.view.activities.SearchActivity"></activity>
+        <activity android:name=".mvp.view.activities.VideoListActivity" />
+        <activity android:name=".mvp.view.activities.SearchActivity" />
     </application>
 
 </manifest>
