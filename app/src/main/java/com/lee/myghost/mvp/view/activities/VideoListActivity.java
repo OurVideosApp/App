@@ -56,11 +56,12 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
         mUrl = intent.getStringExtra("url");
         mName = intent.getStringExtra("name");
         String[] split = mUrl.split("\\?");
+        Log.e("gouzhi", split[0]);
         String[] split1 = split[1].split("\\=");
 
         Map<String, String> map = new HashMap<>();
         map.put(split1[0], split1[1]);
-        getDataPresenter.getDataFromNet(" front/videoDetailApi/videoDetail.do", map);
+        getDataPresenter.getDataFromNet("front/videoDetailApi/videoDetail.do", map);
 
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
