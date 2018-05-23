@@ -49,7 +49,10 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
     implementation 'com.github.open-android:IjkPlayer:1.0.0'
-    //Toolbar
     //noinspection GradleCompatible
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    //shinebutton
+    implementation 'com.sackcentury:shinebutton:0.2.0'
+    //自定义textView  用于实现更多文字的显示
+    implementation 'com.ms-square:expandableTextView:0.1.4'
 }

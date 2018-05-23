@@ -49,6 +49,7 @@
         </activity>
         <activity android:name=".mvp.view.activities.VideoListActivity"></activity>
         <activity android:name=".mvp.view.activities.SearchActivity"></activity>
+        <activity android:name=".mvp.view.activities.VideosDetailActivity"/>
     </application>
 
 </manifest>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/comment_header_icon"
+        android:layout_width="45pt"
+        android:layout_height="45pt"/>
+
+    <RelativeLayout
+        android:id="@+id/comment_message"
+        android:layout_width="400pt"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/comment_header_icon">
+
+        <TextView
+            android:id="@+id/comment_name"
+            android:layout_width="wrap_content"
+            android:layout_height="20pt"
+            android:gravity="center_vertical"
+            android:text="冰与火之歌"
+            android:textColor="#fff"
+            android:textSize="16pt"/>
+
+        <TextView
+            android:id="@+id/comment_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="20pt"
+            android:layout_below="@id/comment_name"
+            android:gravity="center_vertical"
+            android:text="创建时间"
+            android:textColor="#fff"
+            android:textSize="14pt"/>
+
+        <TextView
+            android:id="@+id/comment_context"
+            android:layout_width="wrap_content"
+            android:layout_height="20pt"
+            android:layout_below="@id/comment_create_time"
+            android:layout_marginTop="10pt"
+            android:gravity="center_vertical"
+            android:text="输入的内容"
+            android:textColor="#ddd"
+            android:textSize="16pt"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/comment_message"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+</RelativeLayout>
