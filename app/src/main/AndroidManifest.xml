@@ -49,6 +49,12 @@
         </activity>
         <activity android:name=".mvp.view.activities.VideoListActivity" />
         <activity android:name=".mvp.view.activities.SearchActivity" />
+        <activity android:name=".mvp.view.activities.AboutActivity" />
+        <activity android:name=".mvp.view.activities.CollectActivity" />
+        <activity android:name=".mvp.view.activities.ShareActivity" />
+        <activity android:name=".mvp.view.activities.SuggestActivity" />
+        <activity android:name=".mvp.view.activities.ThemeActivity" />
+        <activity android:name=".mvp.view.activities.WelfareActivity" />
     </application>
 
 </manifest>

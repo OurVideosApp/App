@@ -10,7 +10,7 @@
         android:background="#f00"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x42">
+        android:layout_height="42pt">
         <TextView
             android:id="@+id/find_toolbar_tv"
             android:layout_gravity="center"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="发现"
             android:textColor="#fff"
-            android:textSize="@dimen/x16"/>
+            android:textSize="16pt"/>
     </android.support.v7.widget.Toolbar>
 
      <com.lee.myghost.utils.fangtantan_Animation.SwipeFlingAdapterView
@@ -39,7 +39,7 @@
         android:layout_marginBottom="32dp"/>
 
     <Button
-        android:layout_marginTop="@dimen/y30"
+        android:layout_marginTop="30pt"
         android:id="@+id/find_bt_huanyipi"
         android:layout_alignTop="@id/anchor"
         android:layout_centerHorizontal="true"

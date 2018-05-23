@@ -8,7 +8,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/mine_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x42"
+        android:layout_height="42pt"
         android:background="#f00"
         android:gravity="center">
 
@@ -19,13 +19,13 @@
             android:layout_gravity="center"
             android:text="我的"
             android:textColor="#fff"
-            android:textSize="@dimen/x16" />
+            android:textSize="16pt" />
     </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:id="@+id/mine_img"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y100"
+        android:layout_height="100pt"
         android:layout_below="@+id/mine_toolbar"
         android:background="@mipmap/my_bg_colorful" />
 
@@ -37,7 +37,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/mine_toolbar"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="@dimen/y45"
+        android:layout_marginTop="45pt"
         android:background="@mipmap/my_set" />
 
     <LinearLayout
