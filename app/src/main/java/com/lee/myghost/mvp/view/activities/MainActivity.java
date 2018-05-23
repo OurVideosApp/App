@@ -177,26 +177,32 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
         switch (view.getId()) {
             case R.id.my_collect:
                 intent = new Intent(MainActivity.this, CollectActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_download:
                 Toast.makeText(MainActivity.this,"待开发",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_welfare:
                 intent = new Intent(MainActivity.this, WelfareActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_share:
                 intent = new Intent(MainActivity.this, ShareActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_suggest:
                 intent = new Intent(MainActivity.this, SuggestActivity.class);
+                startActivity(intent);
                 break;
             case R.id.slide_about:
                 intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
                 break;
             case R.id.slide_theme:
                 intent = new Intent(MainActivity.this, ThemeActivity.class);
+                startActivity(intent);
                 break;
         }
-        startActivity(intent);
+
     }
 }
