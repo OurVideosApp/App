@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg">
+
+
+    <RelativeLayout
+        android:id="@+id/videos_detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="84pt"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/finish_this_page"
+            android:layout_width="20pt"
+            android:layout_height="30pt"
+            android:layout_marginLeft="15pt"
+            android:src="@mipmap/intent_back"/>
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="30pt"
+            android:gravity="center"
+            android:text="忍者神龟"
+            android:textColor="#fff"
+            android:textSize="22pt"/>
+
+        <com.sackcentury.shinebuttonlib.ShineButton
+            android:id="@+id/videos_detail_collect_button"
+            android:layout_width="20pt"
+            android:layout_height="20pt"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15pt"
+            android:src="@android:color/darker_gray"
+            app:allow_random_color="false"
+            app:btn_color="@android:color/darker_gray"
+            app:btn_fill_color="@android:color/holo_green_dark"
+            app:siShape="@raw/star"/>
+    </RelativeLayout>
+
+    <com.dl7.player.media.IjkPlayerView
+        android:id="@+id/video_detail_ijkplayer"
+        android:layout_width="match_parent"
+        android:layout_height="200pt"
+        android:layout_below="@id/videos_detail_header"></com.dl7.player.media.IjkPlayerView>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/videos_detail_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="40pt"
+        android:layout_below="@id/video_detail_ijkplayer"
+        app:tabSelectedTextColor="#aaa"
+        app:tabTextColor="#fff">
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/videos_detail_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/videos_detail_tablayout"></android.support.v4.view.ViewPager>
+</RelativeLayout>

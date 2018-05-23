@@ -55,6 +55,7 @@
         <activity android:name=".mvp.view.activities.SuggestActivity" />
         <activity android:name=".mvp.view.activities.ThemeActivity" />
         <activity android:name=".mvp.view.activities.WelfareActivity" />
+        <activity android:name=".mvp.view.activities.VideosDetailActivity"/>
     </application>
 
 </manifest>

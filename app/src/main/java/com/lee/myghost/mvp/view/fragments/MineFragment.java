@@ -15,20 +15,21 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.lee.myghost.R;
+import com.lee.myghost.mvp.view.activities.VideosDetailActivity;
 
 /**
  * @author Lee
  * @create_time 2018/5/16 20:52
  * @description 我的工具箱
  */
-public class MineFragment extends Fragment implements View.OnClickListener{
+public class MineFragment extends Fragment implements View.OnClickListener {
 
-    private View view;
-    private ImageView mine_img_shezhi;
+    private View           view;
+    private ImageView      mine_img_shezhi;
     private RelativeLayout mine_lishi;
-    private LinearLayout mine_lishi_vadio1;
-    private LinearLayout mine_lishi_vadio2;
-    private LinearLayout mine_lishi_vadio3;
+    private LinearLayout   mine_lishi_vadio1;
+    private LinearLayout   mine_lishi_vadio2;
+    private LinearLayout   mine_lishi_vadio3;
     private RelativeLayout mine_huancun;
     private RelativeLayout mine_shoucang;
     private RelativeLayout mine_zhuti;
@@ -36,7 +37,7 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_mine,container,false);
+        view = inflater.inflate(R.layout.fragment_mine, container, false);
 
         initview();
 
@@ -78,46 +79,47 @@ public class MineFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             //设置
             case R.id.mine_img_shezhi:
-                Log.d("我的页面","设置");
+                Log.d("我的页面", "设置");
                 break;
 
             //历史
             case R.id.mine_lishi:
-                Log.d("我的页面","历史");
+                Log.d("我的页面", "历史");
                 break;
 
-                /*历史下的三个vsdio*/
+            /*历史下的三个vsdio*/
             case R.id.mine_lishi_vadio1:
-                Log.d("我的页面","历史1");
+                Log.d("我的页面", "历史1");
                 break;
 
             case R.id.mine_lishi_vadio2:
-                Log.d("我的页面","历史2");
+                Log.d("我的页面", "历史2");
                 break;
 
             case R.id.mine_lishi_vadio3:
-                Log.d("我的页面","历史3");
+                Log.d("我的页面", "历史3");
                 break;
 
             //缓存
             case R.id.mine_huancun:
-                Log.d("我的页面","缓存");
-                Toast.makeText(getContext(),"微影：敬请期待",Toast.LENGTH_SHORT).show();
+                Log.d("我的页面", "缓存");
+                Toast.makeText(getContext(), "微影：敬请期待", Toast.LENGTH_SHORT).show();
                 break;
 
             //收藏
             case R.id.mine_shoucang:
-                Log.d("我的页面","收藏");
+                Log.d("我的页面", "收藏");
              /*   Intent intent=new Intent(getContext(),Mine_ShouCang.class);
                 startActivity(intent);*/
                 break;
 
             //主题
             case R.id.mine_zhuti:
-                Log.d("我的页面","主题");
+                Intent intent = new Intent(getActivity(), VideosDetailActivity.class);
+                startActivity(intent);
                 break;
         }
     }
