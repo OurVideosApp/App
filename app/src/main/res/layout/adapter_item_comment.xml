@@ -47,10 +47,39 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120pt"
+        android:layout_height="30pt"
         android:layout_toRightOf="@id/comment_message"
         android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+
+        <view
+            android:layout_width="0.5pt"
+            android:layout_height="15pt"
+            android:background="#ddd"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享"/>
+
+        <view
+            android:layout_width="0.5pt"
+            android:layout_height="15pt"
+            android:background="#ddd"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="举报"/>
+
+        <view
+            android:layout_width="0.5pt"
+            android:layout_height="15pt"
+            android:background="#ddd"/>
     </LinearLayout>
 </RelativeLayout>

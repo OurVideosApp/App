@@ -22,6 +22,7 @@ public class CommentFragment extends Fragment {
 
     private View         mView;
     private RecyclerView mCommentRecycler;
+    private CommentAdapter mCommentAdapter;
 
     @Nullable
     @Override
@@ -36,8 +37,8 @@ public class CommentFragment extends Fragment {
 
     private void initData() {
         mCommentRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CommentAdapter commentAdapter = new CommentAdapter();
-        mCommentRecycler.setAdapter(commentAdapter);
+//        mCommentAdapter = new CommentAdapter(getActivity(),);
+//        mCommentRecycler.setAdapter(mCommentAdapter);
     }
 
     private void initView(View mView) {
