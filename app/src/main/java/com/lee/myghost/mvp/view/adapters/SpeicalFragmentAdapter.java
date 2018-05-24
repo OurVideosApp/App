@@ -12,14 +12,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lee.myghost.R;
+import com.lee.myghost.mvp.model.bean.ChoicenessBean;
 import com.lee.myghost.mvp.model.bean.VideoList_Bean;
 
 public class SpeicalFragmentAdapter extends RecyclerView.Adapter<SpeicalFragmentAdapter.holder>{
 
-    private final VideoList_Bean videoList_bean;
+    private final ChoicenessBean videoList_bean;
     private final Context context;
 
-    public SpeicalFragmentAdapter(VideoList_Bean videoList_bean, Context context) {
+    public SpeicalFragmentAdapter(ChoicenessBean videoList_bean, Context context) {
         this.videoList_bean=videoList_bean;
         this.context=context;
     }
@@ -52,7 +53,7 @@ public class SpeicalFragmentAdapter extends RecyclerView.Adapter<SpeicalFragment
     @Override
     public void onBindViewHolder(@NonNull holder holder, int position) {
         holder.itemView.setTag(position);
-        Glide.with(context).load(videoList_bean.getRet().getList().get(position).getPic()).into(holder.speical_fragment_tabulate_img);
+        Glide.with(context).load(videoList_bean.getRet().getList().get(position).getChildList().get(0).getPic()).into(holder.speical_fragment_tabulate_img);
         holder.speical_fragment_tabulate_name.setText(videoList_bean.getRet().getList().get(position).getTitle());
         holder.speical_fragment_tabulate_name.getBackground().setAlpha(80);
         holder.speical_fragment_tabulate_background.getBackground().setAlpha(80);

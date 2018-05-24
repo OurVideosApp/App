@@ -12,10 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lee.myghost.R;
 import com.lee.myghost.api.Constant;
+import com.lee.myghost.mvp.model.bean.ChoicenessBean;
 import com.lee.myghost.mvp.model.bean.VideoList_Bean;
 import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
@@ -38,7 +40,7 @@ public class SpeicalFragment extends Fragment implements GetDataFromNetInter {
     private RecyclerView special_tiaomo;
     private GetDataPresenter getDataPresenter;
     private SpeicalFragmentAdapter speicalFragmentAdapter;
-    private VideoList_Bean videoList_bean;
+    private ChoicenessBean videoList_bean;
 
     @Nullable
     @Override
@@ -52,9 +54,9 @@ public class SpeicalFragment extends Fragment implements GetDataFromNetInter {
         //设置Adapter
         Map<String, String> map=new HashMap<>();
         //catalogId=402834815584e463015584e539330016&pnum=7
-        map.put("catalogId","402834815584e463015584e539330016");
-        map.put("pnum","7");
-        getDataPresenter.getDataFromNet(Constant.VIDEO_CATEGORY_URL,map);
+//        map.put("catalogId","402834815584e463015584e539330016");
+//        map.put("pnum","7");
+        getDataPresenter.getDataFromNet(Constant.HOME_PAGE_URL,map);
         return view;
     }
 
@@ -62,18 +64,23 @@ public class SpeicalFragment extends Fragment implements GetDataFromNetInter {
     public void onSuccess(ResponseBody responseBody) {
         try {
             String string = responseBody.string();
-            videoList_bean = new Gson().fromJson(string, VideoList_Bean.class);
-            Log.e("wang", videoList_bean.getRet().getAdv()+"wangzi");
+            videoList_bean = new Gson().fromJson(string, ChoicenessBean.class);
+//            Log.e("wang", videoList_bean.getRet().getAdv()+"wangzi");
             speicalFragmentAdapter = new SpeicalFragmentAdapter(videoList_bean,getContext());
             special_tiaomo.setAdapter(speicalFragmentAdapter);
             speicalFragmentAdapter.setOnItemClickListener(new SpeicalFragmentAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                    String loadURL = videoList_bean.getRet().getList().get(position).getLoadURL();
-                    Intent intent = new Intent(getActivity(), VideoListActivity.class);
-                    intent.putExtra("url",loadURL);
-                    intent.putExtra("name",videoList_bean.getRet().getList().get(position).getTitle());
-                    startActivity(intent);
+                    String loadURL = videoList_bean.getRet().getList().get(position).getChildList().get(0).getLoadURL();
+                    if (!loadURL.startsWith("http://api.svipmovie.com/")||position==2){
+                        Toast.makeText(getContext(),"没有电影",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Intent intent = new Intent(getActivity(), VideoListActivity.class);
+                        intent.putExtra("url",loadURL);
+                        intent.putExtra("name",videoList_bean.getRet().getList().get(position).getTitle());
+                        startActivity(intent);
+                    }
+
                 }
             });
         } catch (IOException e) {
