@@ -2,19 +2,25 @@ package com.lee.myghost.mvp.view.activities;
 
 import java.lang.reflect.Field;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dl7.player.media.IjkPlayerView;
 import com.lee.myghost.BuildConfig;
 import com.lee.myghost.R;
 import com.lee.myghost.mvp.model.base.BaseAvtivity;
@@ -24,6 +30,8 @@ import com.lee.myghost.mvp.view.adapters.FragmentAdapter;
 import com.lee.myghost.mvp.view.fragments.CommentFragment;
 import com.lee.myghost.mvp.view.fragments.IntroFragment;
 import com.sackcentury.shinebuttonlib.ShineButton;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +50,25 @@ public class VideosDetailActivity extends BaseAvtivity<GetDataPresenter> impleme
     ArrayList<String> titleList = new ArrayList<String>();
     //构造适配器
     List<Fragment>    fragments = new ArrayList<Fragment>();
+    private IjkPlayerView mPlayerView;
+    private Uri mUri;
 
+    //    http://movie.vods00.cnlive.com/video/data1/2017/0614/221621/1500/f7979239681941a89fab4ab5d0650482_221621_1500.m3u8
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        String url = intent.getStringExtra("url");
+        String spurl = intent.getStringExtra("spurl");
+        Toast.makeText(this,url,Toast.LENGTH_SHORT).show();
+        mPlayerView = (IjkPlayerView) findViewById(R.id.video_detail_ijkplayer);
+        mUri = Uri.parse(spurl);
 
+        mPlayerView.init()
+                .setVideoPath(mUri)
+                .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
+                .enableDanmaku()
+                .start();
     }
 
     @Override
@@ -81,6 +103,25 @@ public class VideosDetailActivity extends BaseAvtivity<GetDataPresenter> impleme
         mVideosDetailViewpager.setAdapter(adapter);
         mVideosDetailTablayout.setTabMode(TabLayout.MODE_FIXED);
         mVideosDetailTablayout.setupWithViewPager(mVideosDetailViewpager);
+//        int selectedTabPosition = mVideosDetailTablayout.getSelectedTabPosition();
+
+
+//        mVideosDetailTablayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+////                tab.
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
     }
 
     @Override
@@ -135,5 +176,44 @@ public class VideosDetailActivity extends BaseAvtivity<GetDataPresenter> impleme
         }
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPlayerView.onResume();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPlayerView.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPlayerView.onDestroy();
+
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mPlayerView.configurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (mPlayerView.handleVolumeKey(keyCode)) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mPlayerView.onBackPressed()) {
+            return;
+        }
+        super.onBackPressed();
+    }
 }

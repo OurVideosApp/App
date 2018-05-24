@@ -1,7 +1,6 @@
 package com.lee.myghost.mvp.view.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,9 +16,13 @@ import com.lee.myghost.mvp.model.bean.VideoListBean;
 import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
 import com.lee.myghost.mvp.view.adapters.VideoListAdapter;
+import com.lee.myghost.utils.FirstEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.ResponseBody;
@@ -32,6 +35,8 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
     private TextView         mBack;
     private String           mName;
     private String           mUrl;
+    private VideoListAdapter videoListAdapter;
+    private VideoListBean videoListBean;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,12 +92,27 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
     public void onSuccess(ResponseBody responseBody) {
         try {
             String string = responseBody.string();
-            VideoListBean videoListBean = new Gson().fromJson(string, VideoListBean.class);
-            VideoListAdapter videoListAdapter = new VideoListAdapter(videoListBean, this);
+            videoListBean = new Gson().fromJson(string, VideoListBean.class);
+            videoListAdapter = new VideoListAdapter(videoListBean, this);
             video_list_tiaomu.setAdapter(videoListAdapter);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        videoListAdapter.setOnItemClickListener(new VideoListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                List<VideoListBean.RetBean.ListBean.ChildListBean> childList = videoListBean.getRet().getList().get(position).getChildList();
+                EventBus.getDefault().postSticky(new FirstEvent(childList));
+                Log.e("wangzi22", childList.get(0).getTitle()+"123456789");
+                Intent intent = new Intent(VideoListActivity.this, VideosDetailActivity.class);
+//                ultraClearURL   HDURL
+                intent.putExtra("url",mUrl);
+                intent.putExtra("spurl",videoListBean.getRet().getHDURL());
+                startActivity(intent);
+
+
+            }
+        });
 
     }
 
