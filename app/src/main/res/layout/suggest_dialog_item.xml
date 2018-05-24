@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/suggest_title"
+        android:layout_width="match_parent"
+        android:layout_height="55pt"
+        android:background="#ff9"
+        android:gravity="center"
+        android:text="反馈"
+        android:textSize="25pt"/>
+
+    <EditText
+        android:id="@+id/suggest_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/suggest_title"
+        android:layout_marginBottom="15pt"
+        android:layout_marginTop="15pt"
+        android:background="@null"
+        android:hint="请输入您的邮箱(必填)"
+        android:paddingLeft="20pt"
+        android:textSize="18pt"/>
+
+    <View
+        android:id="@+id/suggest_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5pt"
+        android:layout_below="@id/suggest_email"
+        android:background="#ccc"/>
+
+    <EditText
+        android:id="@+id/suggest_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/suggest_view"
+        android:layout_marginBottom="15pt"
+        android:layout_marginTop="15pt"
+        android:background="@null"
+        android:gravity="clip_vertical"
+        android:hint="请输入您的反馈..."
+        android:minLines="6"
+        android:paddingLeft="20pt"
+        android:textSize="18pt"/>
+
+    <Button
+        android:id="@+id/hold_the_tape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/suggest_feedback"
+        android:layout_marginLeft="10pt"
+        android:layout_marginRight="10pt"
+        android:background="#eee"
+        android:gravity="center"
+        android:text="按住录音"
+        android:textSize="20pt"/>
+
+    <CheckBox
+        android:id="@+id/uploading_screenshot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hold_the_tape"
+        android:layout_marginLeft="15pt"
+        android:layout_marginTop="20pt"
+        android:text="上传屏幕截图"
+        android:textColor="#88D0B4"
+        android:textSize="20pt"/>
+
+    <TextView
+        android:id="@+id/get_phone_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/uploading_screenshot"
+        android:layout_marginLeft="15pt"
+        android:layout_marginTop="30pt"
+        android:text="设备详情"
+        android:textColor="#88D0B4"
+        android:textSize="18pt"/>
+</RelativeLayout>
