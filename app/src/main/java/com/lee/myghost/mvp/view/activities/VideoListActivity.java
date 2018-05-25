@@ -113,7 +113,7 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
         videoListAdapter.setOnItemClickListener(new VideoListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                List<VideoListBean.RetBean.ListBean.ChildListBean> childList = videoListBean.getRet().getList().get(position).getChildList();
+                List<VideoListBean.RetBean.ListBean.ChildListBean> childList = videoListBean.getRet().getList().get(0).getChildList();
                 EventBus.getDefault().postSticky(new FirstEvent(childList));
                 Intent intent = new Intent(VideoListActivity.this, VideosDetailActivity.class);
                 intent.putExtra("url",mUrl);
