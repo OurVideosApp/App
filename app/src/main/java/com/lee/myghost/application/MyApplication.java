@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.os.Process;
 import android.os.StrictMode;
 
-import com.lee.myghost.mvp.view.db.DaoMaster;
-import com.lee.myghost.mvp.view.db.DaoSession;
+import com.lee.myghost.DaoMaster;
+import com.lee.myghost.DaoSession;
 import com.lee.myghost.utils.DensityHelper;
 import com.lee.myghost.utils.SharedPreferencesHelper;
 
