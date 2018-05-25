@@ -1,4 +1,4 @@
-package com.lee.myghost.mvp.view.db;
+package com.lee.myghost;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

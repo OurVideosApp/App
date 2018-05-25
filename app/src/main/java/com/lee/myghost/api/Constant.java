@@ -21,7 +21,7 @@ public class Constant {
     public static final String VIDEO_CATEGORY_URL = "front/columns/getVideoList.do";
 
     //影片搜索   ?keyword=我
-    public static final String SEARCH_VIDEO_URL = "front/searchKeyWordApi/getVideoListByKeyWord.do ";
+    public static final String SEARCH_VIDEO_URL = "front/searchKeyWordApi/getVideoListByKeyWord.do";
 
     //获取评论列表   ?mediaId=CMCC_00000000000000001_621653189
     public static final String GET_COMMENT_URL = "front/Commentary/getCommentList.do";
