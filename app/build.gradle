@@ -75,4 +75,6 @@ dependencies {
     implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
 //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.jaeger.statusbaruitl:library:1.0.0'
+    implementation 'com.hjm:BottomTabBar:1.1.1'
 }

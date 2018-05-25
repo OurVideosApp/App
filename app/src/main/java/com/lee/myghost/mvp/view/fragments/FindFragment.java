@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lee.myghost.R;
+import com.lee.myghost.utils.CommonUtil;
 import com.lee.myghost.utils.fangtantan_animation.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -50,25 +51,29 @@ public class FindFragment extends Fragment implements SwipeFlingAdapterView.onFl
     private InnerAdapter adapter;
     private View view;
     private Toolbar toolbar;
+    private int titleBackGround;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_find,container,false);
-
-   //     toolbar();
+        toolbar = (Toolbar) view.findViewById(R.id.find_toolbar);
         initView();
         loadData();
 
         return view;
     }
+    public void setTitleBackGround(int color){
+        toolbar.setBackgroundColor(color);
+    }
 
-    //设置标题
-    private void toolbar() {
-        toolbar = (Toolbar) view.findViewById(R.id.find_toolbar);
-     //   toolbar.setTitle("发现");
-     //   toolbar.setSubtitle("SubTitle");
-     //   toolbar.setLogo(R.mipmap.ic_launcher);
+    @Override
+    public void onResume() {
+        super.onResume();
+        int colorValue = CommonUtil.obtainColorValue();
+        if (colorValue!=-1){
+            toolbar.setBackgroundColor(colorValue);
+        }
     }
 
     private void initView() {
@@ -143,6 +148,8 @@ public class FindFragment extends Fragment implements SwipeFlingAdapterView.onFl
             }
         }.execute();
     }
+
+
 
 
     private class InnerAdapter extends BaseAdapter {

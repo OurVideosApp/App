@@ -23,7 +23,9 @@
             android:layout_marginRight="80pt"
             android:background="@drawable/search_kuang"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <ImageView
                 android:layout_width="50pt"
@@ -38,7 +40,9 @@
                 android:layout_marginLeft="10pt"
                 android:background="@null"
                 android:hint="请输入您喜欢的电影"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
             <ImageView
                 android:id="@+id/search_clean_edittext"
                 android:layout_width="30pt"

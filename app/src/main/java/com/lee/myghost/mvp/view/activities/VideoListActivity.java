@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -16,6 +17,7 @@ import com.lee.myghost.mvp.model.bean.VideoListBean;
 import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
 import com.lee.myghost.mvp.view.adapters.VideoListAdapter;
+import com.lee.myghost.utils.CommonUtil;
 import com.lee.myghost.utils.FirstEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -31,17 +33,26 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
 
     private GetDataPresenter getDataPresenter;
     private RecyclerView     video_list_tiaomu;
-    private TextView         mVideo_list_title;
+    private RelativeLayout mVideo_list_title;
     private TextView         mBack;
     private String           mName;
     private String           mUrl;
     private VideoListAdapter videoListAdapter;
     private VideoListBean videoListBean;
+    private TextView video_list_name;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int colorValue = CommonUtil.obtainColorValue();
+        if (colorValue!=-1){
+            video_list_name.setBackgroundColor(colorValue);
+        }
     }
 
     @Override
@@ -49,6 +60,7 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
         getDataPresenter = new GetDataPresenter(this);
         video_list_tiaomu = findViewById(R.id.video_list_tiaomu);
         mVideo_list_title = findViewById(R.id.video_list_title);
+        video_list_name = findViewById(R.id.video_list_name);
         mBack = findViewById(R.id.back);
         GridLayoutManager layoutmanager = new GridLayoutManager(this, 3);
         //设置RecyclerView 布局
@@ -74,7 +86,7 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
                 finish();
             }
         });
-        mVideo_list_title.setText(mName);
+        video_list_name.setText(mName);
     }
 
     @Override
@@ -103,9 +115,7 @@ public class VideoListActivity extends BaseAvtivity<GetDataPresenter> implements
             public void onItemClick(View view, int position) {
                 List<VideoListBean.RetBean.ListBean.ChildListBean> childList = videoListBean.getRet().getList().get(position).getChildList();
                 EventBus.getDefault().postSticky(new FirstEvent(childList));
-                Log.e("wangzi22", childList.get(0).getTitle()+"123456789");
                 Intent intent = new Intent(VideoListActivity.this, VideosDetailActivity.class);
-//                ultraClearURL   HDURL
                 intent.putExtra("url",mUrl);
                 intent.putExtra("spurl",videoListBean.getRet().getHDURL());
                 startActivity(intent);

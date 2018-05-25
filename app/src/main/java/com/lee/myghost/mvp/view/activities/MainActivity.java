@@ -1,8 +1,10 @@
 package com.lee.myghost.mvp.view.activities;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -10,38 +12,46 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hjm.bottomtabbar.BottomTabBar;
+import com.jaeger.library.StatusBarUtil;
 import com.lee.myghost.R;
 import com.lee.myghost.mvp.model.base.BaseAvtivity;
+import com.lee.myghost.mvp.model.base.BaseFragment;
 import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
+import com.lee.myghost.mvp.view.adapters.ThemeAdapter;
 import com.lee.myghost.mvp.view.fragments.ChoicenessFragment;
 import com.lee.myghost.mvp.view.fragments.FindFragment;
 import com.lee.myghost.mvp.view.fragments.MineFragment;
 import com.lee.myghost.mvp.view.fragments.SpeicalFragment;
+import com.lee.myghost.utils.CommonUtil;
 import com.lee.myghost.utils.ShareUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 
-public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetDataFromNetInter, RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetDataFromNetInter,View.OnClickListener {
 
     String ANDROID_ID = android.os.Build.MODEL;
     private FrameLayout         main_framlayout;
-    private RadioGroup          main_radiogroup;
-    private RadioButton         check_sift;
-    private RadioButton         check_special;
-    private RadioButton         check_find;
-    private RadioButton         check_my;
+    private BottomTabBar main_radiogroup;
     private FragmentManager     manager;
     private FragmentTransaction transaction;
     private ChoicenessFragment  mChoicenessFragment;
@@ -75,26 +85,25 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
      * 设备详情
      */
     private TextView mGetPhoneInfo;
+    private int clickPosition=0;
+    private View parentView;
+    private LinearLayout side_linearlayout;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("TAG", "setChildContentView: " + "执行onCreate");
+        parentView = View.inflate(this, R.layout.activity_main, null);
         initView();
+        initData();
     }
 
     @Override
     public void initView() {
         main_framlayout = findViewById(R.id.main_framlayout);
         main_radiogroup = findViewById(R.id.main_radiogroup);
-        check_sift = findViewById(R.id.check_sift);
-        check_special = findViewById(R.id.check_special);
-        check_find = findViewById(R.id.check_find);
-        check_my = findViewById(R.id.check_my);
-        manager = getSupportFragmentManager();
-        mChoicenessFragment = new ChoicenessFragment();
-        main_radiogroup.setOnCheckedChangeListener(this);
         my_collect = findViewById(R.id.my_collect);
+        side_linearlayout = findViewById(R.id.side_linearlayout);
         my_download = findViewById(R.id.my_download);
         my_welfare = findViewById(R.id.my_welfare);
         my_share = findViewById(R.id.my_share);
@@ -108,14 +117,21 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
         my_suggest.setOnClickListener(this);
         slide_about.setOnClickListener(this);
         slide_theme.setOnClickListener(this);
-
     }
 
     @Override
     public void initData() {
-        transaction = manager.beginTransaction();
-        transaction.add(R.id.main_framlayout, mChoicenessFragment);
-        transaction.commit();
+        main_radiogroup.init(getSupportFragmentManager())
+                .setImgSize(80, 80)
+                .setFontSize(10)
+                .setTabPadding(4, 6, 10)
+                .setChangeColor(Color.RED, Color.DKGRAY)
+                .setTabBarBackgroundResource(R.mipmap.bottom_bg)
+                .addTabItem("精选", R.mipmap.found_select, R.mipmap.found, ChoicenessFragment.class)
+                .addTabItem("专题", R.mipmap.special_select, R.mipmap.special, SpeicalFragment.class)
+                .addTabItem("发现", R.mipmap.fancy_select, R.mipmap.fancy, FindFragment.class)
+                .addTabItem("我的", R.mipmap.my_select, R.mipmap.my, MineFragment.class)
+                .isShowDivider(false);
     }
 
     @Override
@@ -139,73 +155,6 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
         Log.d("MainActivity", "throwable:" + throwable);
     }
 
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId) {
-            case R.id.check_sift:
-                FragmentTransaction transaction_sift = manager.beginTransaction();
-                hideAll(transaction_sift);
-                if (mChoicenessFragment != null) {
-                    transaction_sift.show(mChoicenessFragment);
-                } else {
-                    mChoicenessFragment = new ChoicenessFragment();
-                    transaction_sift.add(R.id.main_framlayout, mChoicenessFragment);
-                }
-                transaction_sift.commit();
-                break;
-            case R.id.check_special:
-                FragmentTransaction transaction_special = manager.beginTransaction();
-                hideAll(transaction_special);
-                if (mSpeicalFragment != null) {
-                    transaction_special.show(mSpeicalFragment);
-                } else {
-                    mSpeicalFragment = new SpeicalFragment();
-                    transaction_special.add(R.id.main_framlayout, mSpeicalFragment);
-                }
-                transaction_special.commit();
-                break;
-            case R.id.check_find:
-                FragmentTransaction transaction_find = manager.beginTransaction();
-                hideAll(transaction_find);
-                if (mFindFragment != null) {
-                    transaction_find.show(mFindFragment);
-                } else {
-                    mFindFragment = new FindFragment();
-                    transaction_find.add(R.id.main_framlayout, mFindFragment);
-                }
-                transaction_find.commit();
-                break;
-            case R.id.check_my:
-                FragmentTransaction transaction_my = manager.beginTransaction();
-                hideAll(transaction_my);
-                if (mMineFragment != null) {
-                    transaction_my.show(mMineFragment);
-                } else {
-                    mMineFragment = new MineFragment();
-                    transaction_my.add(R.id.main_framlayout, mMineFragment);
-                }
-                transaction_my.commit();
-                break;
-        }
-    }
-
-    private void hideAll(FragmentTransaction fragment) {
-        if (fragment == null) {
-            return;
-        }
-        if (mChoicenessFragment != null) {
-            fragment.hide(mChoicenessFragment);
-        }
-        if (mSpeicalFragment != null) {
-            fragment.hide(mSpeicalFragment);
-        }
-        if (mFindFragment != null) {
-            fragment.hide(mFindFragment);
-        }
-        if (mMineFragment != null) {
-            fragment.hide(mMineFragment);
-        }
-    }
 
     @Override
     public void onClick(View view) {
@@ -232,13 +181,79 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
                 startActivity(intent);
                 break;
             case R.id.slide_theme:
-                intent = new Intent(MainActivity.this, ThemeActivity.class);
-                startActivity(intent);
+                showSelectThemes();
                 break;
             case R.id.hold_the_tape:
                 break;
         }
 
+    }
+
+    private void showSelectThemes() {
+        clickPosition = 0;
+        final ArrayList<Integer> colorData = getColorData();
+        View view = View.inflate(this, R.layout.theme_view, null);
+        GridView gridView = view.findViewById(R.id.theme_gridView);
+        final ThemeAdapter themeAdapter = new ThemeAdapter(getColorData(), 0, this);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                themeAdapter.setPosition(position);
+                clickPosition = position;
+                themeAdapter.notifyDataSetChanged();
+                int colors = colorData.get(position);
+                side_linearlayout.setBackgroundColor(getResources().getColor(colors));
+            }
+        });
+        gridView.setAdapter(themeAdapter);
+
+        new AlertDialog.Builder(this)
+                .setView(view)
+                .setPositiveButton("取消", null)
+                .setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int color = getResources().getColor(colorData.get(clickPosition));
+                        StatusBarUtil.setColor(MainActivity.this, color);
+                        if (parentView != null)
+                            parentView.setBackgroundColor(color);
+                        CommonUtil.saveColorValue(color);
+
+                        if (mSpeicalFragment != null){
+                            mSpeicalFragment.setTitleBackGround(color);
+                        }
+                        if (mFindFragment != null){
+                            mFindFragment.setTitleBackGround(color);
+                        }
+                        if (mMineFragment != null){
+                            mMineFragment.setTitleBackGround(color);
+                        }
+
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    private ArrayList<Integer> getColorData() {
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(R.color.colorBluePrimaryDark);
+        integers.add(R.color.colorAccent);
+        integers.add(R.color.colorTealPrimary);
+        integers.add(R.color.colorDeepOrangePrimary);
+        integers.add(R.color.colorRedPrimaryCenter);
+        integers.add(R.color.colorRedPrimary);
+        integers.add(R.color.colorPrimaryDark);
+        integers.add(R.color.colorPrimary);
+        integers.add(R.color.colorLimePrimaryCenter);
+        integers.add(R.color.colorOrangePrimary);
+        integers.add(R.color.colorSecondText);
+        integers.add(R.color.colorLimePrimaryDark);
+        integers.add(R.color.colorDeepPurplePrimaryCenter);
+        integers.add(R.color.colorHint);
+        integers.add(R.color.colorDeepOrangePrimaryCenter);
+        integers.add(R.color.colorSecondText);
+        return integers;
     }
 
     public void popWindowMethod() {
@@ -262,6 +277,37 @@ public class MainActivity extends BaseAvtivity<GetDataPresenter> implements GetD
 
             }
         }).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (parentView != null) {
+            int colorStyle = CommonUtil.obtainColorValue();
+            if (colorStyle != -1) {
+                parentView.setBackgroundColor(colorStyle);
+            }
+        }
+    }
+
+    /*两次退出*/
+    private long exitTime = 0;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                //弹出提示，可以有多种方式
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return false;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     /**

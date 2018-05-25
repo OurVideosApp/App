@@ -20,7 +20,7 @@ import com.lee.myghost.utils.glide.GlideImageLoader;
 import java.util.List;
 
 public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.ViewHolder> {
-    private List<ChoicenessBean.RetBean.ListBean.ChildListBean> childList;
+    private List<ChoicenessBean.RetBean.ListBean.ChildListBean> childLists;
     private Context                                             context;
     private ItemClickListener                                   mListener;
 
@@ -28,8 +28,8 @@ public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.Vi
         this.mListener = mListener;
     }
 
-    public ChoicenessAdapter(List<ChoicenessBean.RetBean.ListBean.ChildListBean> childList, Context context) {
-        this.childList = childList;
+    public ChoicenessAdapter(List<ChoicenessBean.RetBean.ListBean.ChildListBean> childLists, Context context) {
+        this.childLists = childLists;
         this.context = context;
     }
 
@@ -43,11 +43,11 @@ public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ChoicenessAdapter.ViewHolder holder, final int position) {
-        String pic = childList.get(position).getPic();
-        Glide.with(context).load(pic).into(holder.choicenessadapter_imageview);
-        holder.choicenessadapter_linerlayout.getBackground().setAlpha(100);
-        holder.choicenessadapter_name.setText(childList.get(position).getTitle());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                String pic = childLists.get(position).getPic().toString();
+                Glide.with(context).load(pic).into(holder.choicenessadapter_imageview);
+                holder.choicenessadapter_name.setText(childLists.get(position).getTitle());
+                holder.choicenessadapter_linerlayout.getBackground().setAlpha(100);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.OnItemClick(position);
@@ -58,7 +58,7 @@ public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return childList.size();
+        return childLists.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

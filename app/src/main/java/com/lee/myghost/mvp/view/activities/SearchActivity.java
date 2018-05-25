@@ -1,15 +1,12 @@
 package com.lee.myghost.mvp.view.activities;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lee.myghost.R;
+import com.lee.myghost.SearchDao;
 import com.lee.myghost.api.Constant;
 import com.lee.myghost.application.MyApplication;
 import com.lee.myghost.mvp.model.base.BaseAvtivity;
@@ -30,7 +28,7 @@ import com.lee.myghost.mvp.view.adapters.ChoicenessAdapter;
 import com.lee.myghost.mvp.view.adapters.SearchAdapter;
 import com.lee.myghost.mvp.view.customviews.WordWrapView;
 import com.lee.myghost.mvp.view.db.Search;
-import com.lee.myghost.mvp.view.db.SearchDao;
+import com.lee.myghost.utils.CommonUtil;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -52,7 +50,8 @@ public class SearchActivity extends BaseAvtivity<GetDataPresenter> implements Vi
     private GetDataPresenter getDataPresenter;
     private RelativeLayout search_history_relativelayout;
     private RecyclerView search_listings_recyclerview;
-    private List<ChoicenessBean.RetBean.ListBean.ChildListBean> childList;
+    private List<ChoicenessBean.RetBean.ListBean.ChildListBean> childLists;
+    private RelativeLayout search_relativelayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,6 +101,7 @@ public class SearchActivity extends BaseAvtivity<GetDataPresenter> implements Vi
     @Override
     public void initView() {
         search_recyclerview = findViewById(R.id.search_recyclerview);
+        search_relativelayout = findViewById(R.id.search_relativelayout);
         search_edittext = findViewById(R.id.search_edittext);
         search_textview = findViewById(R.id.search_textview);
         search_clean = findViewById(R.id.search_clean);
@@ -113,6 +113,17 @@ public class SearchActivity extends BaseAvtivity<GetDataPresenter> implements Vi
         search_textview.setOnClickListener(this);
         search_clean.setOnClickListener(this);
         search_clean_edittext.setOnClickListener(this);
+    }
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int colorValue = CommonUtil.obtainColorValue();
+        if (colorValue!=-1){
+            search_relativelayout.setBackgroundColor(colorValue);
+        }
     }
 
     @Override
@@ -180,10 +191,10 @@ public class SearchActivity extends BaseAvtivity<GetDataPresenter> implements Vi
             ChoicenessBean choicenessBean = new Gson().fromJson(json, ChoicenessBean.class);
             List<ChoicenessBean.RetBean.ListBean> list1 = choicenessBean.getRet().getList();
             for (int i=0; i<list1.size(); i++){
-                childList = list1.get(i).getChildList();
+                childLists = list1.get(i).getChildList();
 
             }
-            ChoicenessAdapter choicenessAdapter = new ChoicenessAdapter(childList,this);
+            ChoicenessAdapter choicenessAdapter = new ChoicenessAdapter(childLists,this);
             search_recyclerview.setAdapter(choicenessAdapter);
         } catch (IOException e) {
             e.printStackTrace();

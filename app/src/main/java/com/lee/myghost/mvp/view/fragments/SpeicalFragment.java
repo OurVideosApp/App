@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -23,6 +24,7 @@ import com.lee.myghost.mvp.model.contract.viewinter.GetDataFromNetInter;
 import com.lee.myghost.mvp.presenter.GetDataPresenter;
 import com.lee.myghost.mvp.view.activities.VideoListActivity;
 import com.lee.myghost.mvp.view.adapters.SpeicalFragmentAdapter;
+import com.lee.myghost.utils.CommonUtil;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -41,23 +43,37 @@ public class SpeicalFragment extends Fragment implements GetDataFromNetInter {
     private GetDataPresenter getDataPresenter;
     private SpeicalFragmentAdapter speicalFragmentAdapter;
     private ChoicenessBean videoList_bean;
+    private TextView special_title;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_special,container,false);
         special_tiaomo = view.findViewById(R.id.special_tiaomo);
+        special_title = view.findViewById(R.id.special_title);
         getDataPresenter = new GetDataPresenter(this);
         GridLayoutManager layoutmanager = new GridLayoutManager(getContext(),2);
         //设置RecyclerView 布局
         special_tiaomo.setLayoutManager(layoutmanager);
         //设置Adapter
         Map<String, String> map=new HashMap<>();
-        //catalogId=402834815584e463015584e539330016&pnum=7
-//        map.put("catalogId","402834815584e463015584e539330016");
-//        map.put("pnum","7");
         getDataPresenter.getDataFromNet(Constant.HOME_PAGE_URL,map);
         return view;
+    }
+
+    public void setTitleBackGround(int color){
+        special_title.setBackgroundColor(color);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        int colorValue = CommonUtil.obtainColorValue();
+        if(colorValue!=-1){
+            special_title.setBackgroundColor(colorValue);
+        }
+
     }
 
     @Override

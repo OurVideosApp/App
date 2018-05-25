@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fadingEdge="none"
-    android:overScrollMode="never"
-    android:scrollbars="none">
+    >
+    <RelativeLayout
+        android:id="@+id/choiceness_title"
+        android:layout_width="match_parent"
+        android:layout_height="135pt">
+        <TextView
+            android:id="@+id/choiceness_title_name"
+            android:layout_width="match_parent"
+            android:layout_height="82pt"
+            android:textSize="32pt"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/choiceness_smartrefresh">
 
+
+    <com.lee.myghost.mvp.view.customviews.ObservableScrollView
+        android:id="@+id/observe_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:scrollbars="none">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,7 +37,7 @@
         <com.youth.banner.Banner
             android:id="@+id/choiceness_banner"
             android:layout_width="match_parent"
-            android:layout_height="450pt"></com.youth.banner.Banner>
+            android:layout_height="300pt"></com.youth.banner.Banner>
 
         <RelativeLayout
             android:id="@+id/choiceness_recommend"
@@ -46,11 +69,12 @@
 
             <LinearLayout
                 android:id="@+id/choiceness_linearlayout"
-                android:layout_width="500pt"
-                android:layout_height="76pt"
+                android:layout_width="400pt"
+                android:layout_height="70pt"
                 android:layout_centerInParent="true"
                 android:background="@drawable/sousuokuang"
                 android:gravity="center"
+                android:layout_marginTop="10pt"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -60,14 +84,16 @@
                     android:background="@mipmap/search"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/choiceness_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10pt"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:background="@null"
-                    android:hint="一念天堂"/>
+                    android:text="一念天堂"
+                    android:textColor="#666666"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -79,4 +105,7 @@
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
-</ScrollView>
+    </com.lee.myghost.mvp.view.customviews.ObservableScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</RelativeLayout>

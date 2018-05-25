@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.lee.myghost.R;
 import com.lee.myghost.mvp.view.activities.VideosDetailActivity;
+import com.lee.myghost.utils.CommonUtil;
 
 /**
  * @author Lee
@@ -33,6 +35,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     private RelativeLayout mine_huancun;
     private RelativeLayout mine_shoucang;
     private RelativeLayout mine_zhuti;
+    private Toolbar mine_toolbar;
 
     @Nullable
     @Override
@@ -64,6 +67,8 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         mine_shoucang = (RelativeLayout) view.findViewById(R.id.mine_shoucang);
         //主题
         mine_zhuti = (RelativeLayout) view.findViewById(R.id.mine_zhuti);
+        //标题
+        mine_toolbar = (Toolbar) view.findViewById(R.id.mine_toolbar);
 
         mine_img_shezhi.setOnClickListener(this);
         mine_lishi.setOnClickListener(this);
@@ -74,6 +79,18 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         mine_shoucang.setOnClickListener(this);
         mine_zhuti.setOnClickListener(this);
 
+    }
+    public void setTitleBackGround(int color){
+        mine_toolbar.setBackgroundColor(color);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        int colorValue = CommonUtil.obtainColorValue();
+        if (colorValue!=-1){
+            mine_toolbar.setBackgroundColor(colorValue);
+        }
     }
 
 

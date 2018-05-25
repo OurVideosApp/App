@@ -29,6 +29,7 @@ import com.lee.myghost.mvp.presenter.GetDataPresenter;
 import com.lee.myghost.mvp.view.adapters.FragmentAdapter;
 import com.lee.myghost.mvp.view.fragments.CommentFragment;
 import com.lee.myghost.mvp.view.fragments.IntroFragment;
+import com.lee.myghost.utils.CommonUtil;
 import com.sackcentury.shinebuttonlib.ShineButton;
 
 import org.greenrobot.eventbus.EventBus;
@@ -52,6 +53,7 @@ public class VideosDetailActivity extends BaseAvtivity<GetDataPresenter> impleme
     List<Fragment>    fragments = new ArrayList<Fragment>();
     private IjkPlayerView mPlayerView;
     private Uri mUri;
+    private String title;
 
     //    http://movie.vods00.cnlive.com/video/data1/2017/0614/221621/1500/f7979239681941a89fab4ab5d0650482_221621_1500.m3u8
     @Override
@@ -60,6 +62,8 @@ public class VideosDetailActivity extends BaseAvtivity<GetDataPresenter> impleme
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
         String spurl = intent.getStringExtra("spurl");
+        title = intent.getStringExtra("title");
+
         Toast.makeText(this,url,Toast.LENGTH_SHORT).show();
         mPlayerView = (IjkPlayerView) findViewById(R.id.video_detail_ijkplayer);
         mUri = Uri.parse(spurl);
@@ -69,7 +73,16 @@ public class VideosDetailActivity extends BaseAvtivity<GetDataPresenter> impleme
                 .setMediaQuality(IjkPlayerView.MEDIA_QUALITY_HIGH)
                 .enableDanmaku()
                 .start();
+
+        initTitle();
     }
+
+    private void initTitle() {
+
+        mTitleText.setText(title);
+
+    }
+
 
     @Override
     public void onStart() {
@@ -180,6 +193,10 @@ public class VideosDetailActivity extends BaseAvtivity<GetDataPresenter> impleme
     protected void onResume() {
         super.onResume();
         mPlayerView.onResume();
+        int colorValue = CommonUtil.obtainColorValue();
+        if (colorValue!=-1){
+            mTitleText.setBackgroundColor(colorValue);
+        }
     }
 
     @Override
